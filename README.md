@@ -66,26 +66,6 @@ git branch -M main
 git remote add origin https://github.com/<your-username>/customer-segmentation.git
 git push -u origin main
 ```
-
-(Create the empty repo on GitHub first at github.com/new — don't
-initialize it with a README so the push isn't rejected for unrelated
-histories.)
-
-## Deploy the dashboard (free)
-
-**Streamlit Community Cloud** (easiest, made for this):
-1. Push the repo to GitHub (above).
-2. Go to https://share.streamlit.io → "New app".
-3. Pick your repo, branch `main`, and file `app.py`.
-4. Click **Deploy** — it installs `requirements.txt` automatically and
-   gives you a public URL.
-
-**Alternative**: Hugging Face Spaces (Streamlit SDK) works the same way —
-create a Space, connect the GitHub repo, and it builds automatically.
-
-## Dataset
-
-`data/customers.csv` is synthetic data generated to mimic four realistic
-customer archetypes (budget shoppers, premium loyalists, occasional big
-spenders, disengaged/churn-risk) so the clusters are meaningful out of the
-box. Swap in your own CSV with the same columns to segment real customers.
+## live Demo
+customer-segmentation-dashboard-gs
+https://customer-segmentation-dashboard-gs.streamlit.app/
