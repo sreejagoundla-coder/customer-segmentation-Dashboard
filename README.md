@@ -1,71 +1,120 @@
-# Customer Segmentation Project
+Customer Segmentation Dashboard
 
-Segment customers by combining **demographics** (age, gender, income) with
-**behavioral / RFM data** (recency, frequency, monetary value, basket size,
-channel, category preference) using K-Means clustering — then explore the
-resulting segments through static reports and an interactive Streamlit app.
+An interactive Customer Segmentation project that combines demographic and behavioral/RFM data to group customers into meaningful business segments using K-Means clustering.
 
-## What's inside
+The project includes a Streamlit dashboard where users can upload customer data, select the number of segments, explore cluster visualizations, and download the segmented results.
 
-```
+## 🚀 Live Demo
+
+👉 [Customer Segmentation Dashboard](https://customer-segmentation-dashboard-gs.streamlit.app/)
+
+
+
+📌 Project Overview
+
+Customer segmentation helps businesses understand different groups of customers based on their characteristics and purchasing behavior.
+
+This project uses:
+
+Demographics: Age, Gender, Income
+RFM Data: Recency, Frequency, Monetary Value
+Behavioral Data: Basket Size, Channel, Category Preference
+Customer Information: Tenure and Loyalty Status
+
+K-Means clustering is used to identify groups of customers with similar characteristics.
+
+🛠️ Tech Stack
+Python
+Pandas — Data manipulation
+NumPy — Numerical operations
+Scikit-learn — Scaling, K-Means, PCA, evaluation
+Matplotlib — Visualizations
+Seaborn — Statistical visualizations
+Streamlit — Interactive dashboard
+
+
+📂 Project Structure
 customer-segmentation/
-├── app.py                      # Interactive Streamlit dashboard (deployable)
+│
+├── app.py
+│
 ├── data/
-│   └── customers.csv           # Sample dataset (1,000 synthetic customers)
+│   └── customers.csv
+│
 ├── scripts/
-│   ├── generate_data.py        # Creates the sample dataset
-│   ├── clustering.py           # Full pipeline: scaling, elbow/silhouette, KMeans, PCA, plots
-│   └── label_segments.py       # Maps numeric clusters -> business-friendly names
-├── outputs/                    # Generated plots + segmented CSVs
+│   ├── generate_data.py
+│   ├── clustering.py
+│   └── label_segments.py
+│
+├── outputs/
+│   ├── plots/
+│   └── segmented_data/
+│
 ├── requirements.txt
 └── README.md
-```
 
-## Method
 
-1. **Feature engineering** — numeric features (age, income, tenure, recency,
-   frequency, monetary value, avg basket size) are standardized with
-   `StandardScaler`; categorical features (gender, channel, category
-   preference, loyalty status) are one-hot encoded.
-2. **Choosing k** — K-Means is fit for k = 2..10; the **elbow method**
-   (inertia) and **silhouette score** are plotted to pick the best k.
-3. **Segmentation** — final K-Means model assigns each customer to a segment.
-4. **Visualization** — PCA reduces features to 2D for a segment scatter plot;
-   bar charts show each segment's average age, income, recency, frequency,
-   spend, and tenure.
-5. **Labeling** — segments are ranked by spend/frequency/tenure/recency and
-   mapped to readable names (e.g. "VIP / Premium Loyalists", "At-Risk /
-   Disengaged").
+🔍 Methodology
+1. Feature Engineering
 
-## Run it locally
+Numerical features such as:
 
-```bash
-python -m venv venv && source venv/bin/activate   # optional
-pip install -r requirements.txt
+Age
+Income
+Tenure
+Recency
+Frequency
+Monetary Value
+Average Basket Size
 
-python scripts/generate_data.py      # (optional) regenerate sample data
-python scripts/clustering.py         # run the full clustering pipeline -> outputs/
-python scripts/label_segments.py     # add human-readable segment names
+are standardized using StandardScaler.
 
-streamlit run app.py                 # launch the interactive dashboard
-```
+Categorical features such as:
 
-The dashboard lets you upload your own customer CSV (same column schema as
-`data/customers.csv`), pick the number of segments with a slider, and
-download the labeled results.
+Gender
+Channel
+Category Preference
+Loyalty Status
 
-## Push to GitHub
+are converted into numerical form using One-Hot Encoding.
 
-From inside the `customer-segmentation` folder:
+2. Choosing the Number of Clusters
 
-```bash
-git init
-git add .
-git commit -m "Initial commit: customer segmentation project"
-git branch -M main
-git remote add origin https://github.com/<your-username>/customer-segmentation.git
-git push -u origin main
-```
-## live Demo
-customer-segmentation-dashboard-gs
-https://customer-segmentation-dashboard-gs.streamlit.app/
+K-Means clustering is evaluated for different values of K (2–10).
+
+Two methods are used:
+
+Elbow Method — analyzes cluster inertia
+Silhouette Score — evaluates cluster separation
+
+These help determine a suitable number of customer segments.
+
+3. Customer Segmentation
+
+After selecting the appropriate value of K, the K-Means algorithm assigns each customer to a cluster.
+
+4. PCA Visualization
+
+Principal Component Analysis (PCA) reduces the high-dimensional feature space to two dimensions so that customer clusters can be visualized using a scatter plot.
+
+5. Business-Friendly Segment Labels
+
+Numeric clusters are converted into meaningful customer segment names based on metrics such as:
+
+Spending
+Purchase frequency
+Recency
+Customer tenure
+
+Example segments include:
+
+VIP / Premium Loyalists
+High-Value Customers
+Regular Customers
+At-Risk / Disengaged Customers
+
+👩‍💻 Author
+
+sreeja Goundla
+
+Built as a Data Science / Machine Learning project using Python, Scikit-learn, and Streamlit.
